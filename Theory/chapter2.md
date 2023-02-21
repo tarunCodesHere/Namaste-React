@@ -45,8 +45,9 @@
           Parcel watches every file in your project root**
  -BUNDLING 
  -MINIFICATION
-        **Parcel includes minifiers for JavaScript, CSS, HTML, and SVG out of the box. Minification reduces the
-          file size of your output bundles by removing whitespace, renaming variables to shorter names, and many other optimizations.
+        **Parcel includes minifiers for JavaScript, CSS, HTML, and SVG out of the box. Minification 
+        reduces the file size of your output bundles by removing whitespace, renaming variables 
+         to shorter names, and many other optimizations.
           By default, minification is enabled when using the parcel build command. 
           You can use the --no-optimize CLI flag to disable minification and other optimizations if needed.
           Parcel uses terser to minify JavaScript, lightningcss for CSS, htmlnano for HTML, and svgo for SVG.**
