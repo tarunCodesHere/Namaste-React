@@ -23,18 +23,18 @@
 
 ### babel and parcel role in JSX?
 
-- babel is a comipler which comes with parcel, present in node-modules.
+- babel is a compiler which comes with parcel, present in node-modules.
 - babel helps to convert jsx into React.createElement and saves a lot of time and hardwork.
 
-### Functional component?
+### What is Functional component?
 
--React function jo JSX ka value return karega ya react return karega.
+- React function jo JSX ka value return karega ya react return karega.
 
-            --- "react element"                           --- "react(Functional componenet)
-            ---const hd=(                                 ---const HeaderComponent=()=>{
-            ---<h1 key="dsfl">hellow</h1>                 ---return(
-            ---)                                          ---<h1 key="dsfl">hellow</h1>
-            ---                                           ---)}
+             "react element"                           --- "react(Functional componenet)
+            const hd=(                                 ---const HeaderComponent=()=>{
+            <h1 key="dsfl">hellow</h1>                 ---return(
+            )                                          ---<h1 key="dsfl">hellow</h1>
+                                                      ---)}
 
 
 
@@ -43,7 +43,7 @@
 
 ### to call inside FunctionalComponenet
 
-            --- "react element"                           --- "react(Functional componenet)
+            1. "react element"                           2. "react(Functional componenet)
             ---{hd}                                       ---{FunctionalComponent()} or {FunctionalComponenet /}
 
 ### different ways of calling FunctionalComponenet inside functional componenet.
