@@ -79,6 +79,10 @@ export const File1 = {
 
 ### 4. Why do we need a useState Hook? Describe about state varibale.
 
+```javascript
+import { useState } from "react";
+```
+
 - React uses one way data binding. If we want to render component in react we'll need to use useState() hooks as it provides us the `state variable` .
   > React says that if we want to be in-sync with UI we need to use state varibale
 - local variable dosent retain data between renders.
@@ -97,6 +101,13 @@ export const File1 = {
 
 ```javascript
 [searchText, setSearchText] = useState();
+//searchText-state variable name
+//setSsearchText- function to update the state variable
 ```
 
 - React keeps a track of all state varibale (local ka nahi). When state variable gets updated, whole component is re-renderd.( triggered by the set function of state varibale)
+
+### 5. When does component re-renders?
+
+1. when there is a change in state.
+2. when the props(`properites or value that we have passed`) changes.

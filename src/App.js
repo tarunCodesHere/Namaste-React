@@ -72,8 +72,8 @@ const AppLayout = () => {
        */}
 
       <Header />
-      <Body></Body>
-      <Footer></Footer>
+      <Body />
+      <Footer />
     </React.Fragment>
   );
 };

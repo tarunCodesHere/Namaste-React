@@ -1,6 +1,6 @@
-#Important git command
+# Important git command
 
-###begineer level command
+### begineer level command
 
 - `git init` ->it initializes a new git repo.
 - what is git repo?

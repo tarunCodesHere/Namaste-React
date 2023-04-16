@@ -1,15 +1,18 @@
+import { useState } from "react";
+import Logo from "../images/petu-icon.png";
+
 export const Title = () => {
   return (
     <div className="title">
-      <h1>PETU</h1>
       <a href=".">
-        <img src="./images/petu-icon.png" alt="picture of icon"></img>
+        <img className="logo-img" src={Logo} alt="picture of icon"></img>
       </a>
     </div>
   );
 };
 
 const Header = () => {
+  const [authentication, setAuthentication] = useState(true);
   return (
     <div className="header">
       {<Title />}
@@ -22,6 +25,11 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
+      {authentication === true ? (
+        <button onClick={() => setAuthentication(false)}>Logout</button>
+      ) : (
+        <button onClick={() => setAuthentication(true)}>Login</button>
+      )}
     </div>
   );
 };
