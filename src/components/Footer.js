@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div style={{ backgroundColor: "yellow" }}>
+    <div className="footer" style={{ backgroundColor: "yellow" }}>
       <h4>Footer</h4>
     </div>
   );

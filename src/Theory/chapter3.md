@@ -1,13 +1,13 @@
 ### what is JSX?
 
 - javascript xml, jsx--React.createElement--object--HTML(dom)
-- helps to write html in React, JSX is not exactly HTML it's just html like syntax .
+- helps to write html in React, JSX is not exactly HTML it's just html like `syntax` .
 
 ### Superpowers of jsx?
 
 - helps to write html like syntax
 - JSX will be converted into js by Babel
-- JSX is not at a package, it's just a syntax.
+- JSX is not at a package, `it's just a syntax`.
 
 ### role of 'type' attribute in script tag? what else could be used there?
 
@@ -19,16 +19,16 @@
 - provides HTML like synatx in js
 - cleaner code
 - improves readability
-- we don't need to write React.createElement much often
+- we don't need to write React.createElement as it is sugar-coated with JSX
 
 ### babel and parcel role in JSX?
 
 - babel is a compiler which comes with parcel, present in node-modules.
-- babel helps to convert jsx into React.createElement and saves a lot of time and hardwork.
+- `babel helps to convert jsx into React.createElement` and saves a lot of time and hardwork.
 
 ### What is Functional component?
 
-- React function jo JSX ka value return karega ya react return karega.
+- JavaScript function in React jo JSX ka value return karega ya react return karega.
 
              "react element"                           --- "react(Functional componenet)
             const hd=(                                 ---const HeaderComponent=()=>{

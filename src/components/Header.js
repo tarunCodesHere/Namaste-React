@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Logo from "../images/petu-icon.png";
 
 export const Title = () => {
@@ -19,9 +20,13 @@ const Header = () => {
 
       <div className="nav-list">
         <ul>
-          <li>Home</li>
+          <li>
+            <Link to={"/"}>Home</Link>
+          </li>
           <li>Contact</li>
-          <li>About us</li>
+          <li>
+            <Link to="/about">About us</Link>
+          </li>
           <li>Cart</li>
         </ul>
       </div>
