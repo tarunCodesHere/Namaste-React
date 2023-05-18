@@ -6,6 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "parcel build index.html "
   },
   "repository": {
@@ -17,10 +19,11 @@
   "bugs": {
     "url": "https://github.com/tarunCodesHere/Namaste-React/issues"
   },
-  "homepage": "https://github.com/tarunCodesHere/Namaste-React#readme",
+  "homepage": "https://github.com/tarunCodesHere/Namaste-React",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "babel-plugin-transform-remove-console": "^6.9.4",
+    "gh-pages": "^5.0.0",
     "parcel": "^2.8.3",
     "postcss": "^8.4.23",
     "process": "^0.11.10",
