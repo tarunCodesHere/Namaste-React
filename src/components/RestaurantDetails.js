@@ -1,50 +1,27 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { img_CDN_URL } from "../Constant";
 import Shimmer from "./Shimmer";
+import useRestaurantMenu from "../hooks/useRestaurantMenu";
+
 const RestaurantMenu = () => {
-  const restaurant = useParams();
-  const { id } = restaurant;
-
-  const [displayRestaurant, setDisplayRestaurant] = useState(null);
-  const [menuRestaurant, setMenuRestaurant] = useState(null);
-
-  useEffect(() => {
-    getRestaurant();
-  }, []);
-  const getRestaurant = async function () {
-    const data = await fetch(
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=25.5961124&lng=85.16511059999999&restaurantId=${restaurant.id}&submitAction=ENTER`
-    );
-    const json = await data.json();
-    setDisplayRestaurant(json?.data?.cards[0]?.card?.card?.info);
-
-    // removing undefined from array
-    const check =
-      json?.data?.cards[2].groupedCard?.cardGroupMap?.REGULAR?.cards.map(
-        (menu) => menu?.card?.card.itemCards
-      );
-
-    let menuData = check
-      .filter((element) => element !== undefined)
-      .map((item) => item.map((res) => res?.card?.info?.name));
-    setMenuRestaurant(menuData);
-  };
+  const { id } = useParams();
+  const [displayRestaurant, menuRestaurant] = useRestaurantMenu(id);
 
   return !displayRestaurant && !menuRestaurant ? (
     <Shimmer />
   ) : (
-    <div className="display-restro">
+    <div className="flex bg-slate-50 p-3 justify-around">
       <div>
-        <h4>{`Restaurant-id: ${displayRestaurant?.id}`}</h4>
-        <h2>{displayRestaurant?.name}</h2>
+        <h2 className="text-3xl text-center font-bold text-blue-500 pb-2">
+          {displayRestaurant?.name}
+        </h2>
         <img src={img_CDN_URL + displayRestaurant?.cloudinaryImageId} />
         <h3>{displayRestaurant?.areaName}</h3>
         <h3>{displayRestaurant?.city}</h3>
         <h3>{displayRestaurant?.costForTwoMessage}</h3>
       </div>
-      <div className="restro-menu">
-        <h2>MENU</h2>
+      <div className="restro-menu bg-cyan-50 px-4 hover:border-gray-500">
+        <h2 className="text-center font-bold mb-1 ">MENU</h2>
         {menuRestaurant[0].map((item, index) => (
           <li key={index}>{item}</li>
         ))}

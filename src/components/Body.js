@@ -1,22 +1,16 @@
-import { render } from "react-dom";
-import { restaurantList } from "../Constant";
 import { RestaurantCard } from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { SWIGGY_MAIN_API_URL } from "../Constant";
+import filterData from "../utils/helper.js";
+import useOnline from "../hooks/useOnline";
 
-function filterData(searchText, restaurants) {
-  return restaurants.filter((restaurant) =>
-    restaurant.data.name.toLowerCase().includes(searchText.toLowerCase())
-  );
-}
-
-const Body = () => {
+const Body = ({ user }) => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFliteredRestaurants] = useState([]);
-
-  //
   const [searchText, setSearchText] = useState("");
+  const isOnline = useOnline();
 
   // useEffect hook
   useEffect(() => {
@@ -24,39 +18,32 @@ const Body = () => {
   }, []);
 
   async function getRestaurant() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5961124&lng=85.16511059999999&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(SWIGGY_MAIN_API_URL);
 
     const json = await data.json();
 
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFliteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
-    //
-    // setRestaurant(json?.data?.cards[2]?.data?.data?.cards);
   }
 
-  // console.log("render");
   // conditional rendering
   // if no restaurant--> shimmer UI
-  if (!allRestaurants) return null;
-
   return allRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="my-2 bg-green-50 px-3 py-5 start shadow-lg">
         <input
           value={searchText}
-          className="text-input"
+          className="p-2 px-10 text-black outline-gray-400"
           type="text"
-          placeholder="Search"
+          placeholder="Search any restaurant"
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         ></input>
         <button
-          className="search-btn"
+          className="search-btn bg-purple-900 rounded-md p-2 text-white ml-3 hover:bg-purple-500"
           onClick={() => {
             //filter the data
             // const data = filterData(searchText, allRestaurant);
@@ -67,11 +54,11 @@ const Body = () => {
             setFliteredRestaurants(data);
           }}
         >
-          search
+          Search
         </button>
       </div>
       {/* to display the restaurant --- all restaurant/// filtered restaurant */}
-      <div className="restaurant-list">
+      <div className=" flex flex-wrap justify-stretch bg-gray-100">
         {filteredRestaurants?.length === 0 ? (
           <h1>No restaurant found</h1>
         ) : (
@@ -79,7 +66,11 @@ const Body = () => {
             return (
               <Link to={"/restaurant/" + restro.data?.id} key={restro.data?.id}>
                 {" "}
-                <RestaurantCard {...restro.data} key={restro.data?.id} />
+                <RestaurantCard
+                  user={user}
+                  {...restro.data}
+                  key={restro.data?.id}
+                />
               </Link>
             );
           })

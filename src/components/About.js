@@ -1,34 +1,16 @@
-import { Outlet, json } from "react-router-dom";
 import ProfileClassComponent from "./ProfileClass";
-import Profile from "./Profile";
 import React from "react";
-
+import { Outlet } from "react-router-dom";
+import Shimmer from "./Shimmer";
 //
-export class About extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("parent constructor");
-  }
-  componentDidMount() {
-    console.log("parent component did mount");
-  }
-  render() {
-    console.log("parent render");
-    return (
-      <>
-        <div>
-          <h1>About us</h1>
-          <h6>{}</h6>
-          <Profile name={"Ram Babu jha"} xyzProp={"iuetiogeotiio"} />
-          <ProfileClassComponent
-            name={"1st child "}
-            xyzProp={"mkcbaharjaakebaatakr"}
-          />
-        </div>
-      </>
-    );
-  }
-}
+export const About = function () {
+  return (
+    <div>
+      <Outlet></Outlet>
+      <ProfileClassComponent></ProfileClassComponent>
+    </div>
+  );
+};
 
 //
 /**

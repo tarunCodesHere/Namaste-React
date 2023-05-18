@@ -10,21 +10,15 @@ class ProfileClass extends React.Component {
         avatar_url: "dummy",
       },
     };
-    console.log("child constructor");
   }
   async componentDidMount() {
-    console.log("child component did mount");
-
     const data = await fetch("https://api.github.com/users/tarunCodesHere");
-    console.log(data);
     const json = await data.json();
-    console.log(json);
     this.setState({
       userInfo: json,
     });
   }
   render() {
-    console.log("child render");
     const { count } = this.state;
     const { count2 } = this.state;
     const { name, public_repos, avatar_url } = this.state.userInfo;
